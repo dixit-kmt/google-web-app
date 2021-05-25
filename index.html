@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <base target="_top">
+
+  <script>
+    function LoadFile(event) {
+      var file = event.target.files[0];
+      var reader = new FileReader();
+      reader.onload = function(e) {
+        console.log(e.target.result);
+        var fileData = e.target.result.substr(e.target.result.indexOf(",") + 1);
+        var mimeTypeStart = e.target.result.indexOf("data:") + 5;
+        var mimeTypeEnd = e.target.result.indexOf(";");
+        var mimeType = e.target.result.substr(mimeTypeStart, mimeTypeEnd - mimeTypeStart);
+        var fileName = file.name;
+        document.getElementById("fileData").value = fileData;
+        document.getElementById("mimeType").value = mimeType;
+        document.getElementById("fileName").value = fileName;
+      };
+      reader.readAsDataURL(file);
+    }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans:wght@700&family=Pacifico&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+  <?var url = getUrl();?>
+
+
+  <div class="page-content">
+
+    <div class="row">
+      <div class="col-lg-6 col-sm-12 title-container">
+        <h1 class="title-heading">Google Web App</h1>
+        <p class="title-text"> for uploading files to google drive and send name to google sheets</p>
+      </div>
+
+      <div class="col-lg-6 col-sm-12">
+        <form method="post" action="https://script.google.com/macros/s/AKfycbxU_VfrSvnWBUZxzUzstE5x33gKSRLcA6urkx0ZvoGFZc7eVsx4s9AU5SB30ud09ZSB/exec">
+          <div class="row">
+            <div class="input-group mb-3">
+              <input type="text" name="username" class="form-control form-control-lg" placeholder="Name" aria-label="Username" aria-describedby="basic-addon1">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+              </div>
+              <div class="custom-file">
+                <input type="file" name="file" onchange="LoadFile(event)" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" />
+                <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                <input type="hidden" id="fileData" name="fileData" />
+                <input type="hidden" id="mimeType" name="mimeType" />
+                <input type="hidden" id="fileName" name="fileName" />
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <input type="submit" value="Upload File" class="btn btn-outline-light btn-block" />
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <footer id="footer">
+    <i class="social fab fa-twitter"></i>
+    <i class="social fab fa-facebook-f"></i>
+    <i class="social fab fa-instagram"></i>
+    <i class="social fas fa-envelope"></i>
+    <p>© Copyright 2021</p>
+  </footer>
+
+
+
+  <script src="https://kit.fontawesome.com/94cdb875d7.js" crossorigin="anonymous"></script>
+  
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      bsCustomFileInput.init()
+    })
+  </script>
+
+</body>
+
+</html>
