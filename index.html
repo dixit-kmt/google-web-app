@@ -47,7 +47,7 @@
         <form method="post" action="https://script.google.com/macros/s/AKfycbxU_VfrSvnWBUZxzUzstE5x33gKSRLcA6urkx0ZvoGFZc7eVsx4s9AU5SB30ud09ZSB/exec">
           <div class="row">
             <div class="input-group mb-3">
-              <input type="text" name="username" class="form-control form-control-lg" placeholder="Name" aria-label="Username" aria-describedby="basic-addon1">
+              <input type="text" name="username" class="form-control form-control-lg" placeholder="Name" aria-label="Username" aria-describedby="basic-addon1" required>
             </div>
           </div>
 
@@ -57,7 +57,7 @@
                 <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
               </div>
               <div class="custom-file">
-                <input type="file" name="file" onchange="LoadFile(event)" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" />
+                <input type="file" name="file" onchange="LoadFile(event)" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" required/>
                 <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
                 <input type="hidden" id="fileData" name="fileData" />
                 <input type="hidden" id="mimeType" name="mimeType" />
